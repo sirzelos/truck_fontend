@@ -9,9 +9,11 @@ import { Router } from "@angular/router";
 export class TitleComponent implements OnInit {
   constructor(private readonly router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
     setTimeout(() => {
-      // this.router.navigate()
+      this.router.navigate(["title"]);
     }, 3000);
   }
 }
