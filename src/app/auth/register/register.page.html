@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>ลงทะเบียน</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div style="padding: 16px">
+    <ion-item>
+      <ion-label position="floating">ชื่อ-นามสกุล</ion-label>
+      <ion-input type="text" maxlength="30" required> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">อีเมล์</ion-label>
+      <ion-input type="email" maxlength="30" required> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">รหัสผ่าน</ion-label>
+      <ion-input type="password" maxlength="30" required> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">ยืนยันรหัสผ่าน</ion-label>
+      <ion-input type="password" maxlength="10" required> </ion-input>
+    </ion-item>
+  </div>
+</ion-content>
+<ion-footer mode="ios">
+  <ion-toolbar>
+    <button>ลงทะเบียน</button>
+  </ion-toolbar>
+</ion-footer>

@@ -12,9 +12,9 @@ export class Title2Page implements OnInit {
   ngOnInit() {}
 
   login() {
-    // this.router.navigate()
+    this.router.navigate(["auth/login"]);
   }
   register() {
-    // this.router.navigate()
+    this.router.navigate(["auth/register"]);
   }
 }

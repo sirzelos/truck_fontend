@@ -39,7 +39,7 @@ ion-back-button {
 }
 
 ion-input {
-  &[type='number'] {
+  &[type="number"] {
     font-family: var(--system-font-stack);
     font-size: 16px;
     font-weight: bold;
@@ -77,10 +77,11 @@ ion-item {
     }
     ion-label {
       margin-bottom: 8px;
+      --color: #000;
     }
     .label {
       font-size: 16px;
-      color: var(--neutrals-grey-06);
+      color: #000;
       &.ion-invalid {
         color: #d23030;
       }
@@ -101,7 +102,7 @@ ion-item {
       .label {
         margin-top: 3px;
         font-size: 14px;
-        color: var(--neutrals-grey-07);
+        color: #000;
       }
       .value {
         display: block;
@@ -192,7 +193,7 @@ ion-item {
   &:not(.item-has-focus) {
     .label-floating {
       font-size: 16px;
-      color: var(--neutrals-grey-06);
+      color: #000;
     }
   }
 
@@ -202,7 +203,7 @@ ion-item {
     .label-floating {
       transform: translate3d(0, 0, 0) !important;
       margin-top: 3px;
-      color: #686868;
+      color: #000;
       font-size: 14px;
     }
     ion-input {

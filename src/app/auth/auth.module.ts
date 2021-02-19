@@ -1,13 +1,13 @@
-import { MemberRoutingModule } from "./member-routing.module";
 import { NgModule } from "@angular/core";
 import { LoginPage } from "./login/login.page";
 import { RegisterPage } from "./register/register.page";
 import { AppCommonModule } from "../@common/common.module";
+import { AuthRoutingModule } from "./auth-routing.module";
 
 @NgModule({
-  imports: [AppCommonModule, MemberRoutingModule],
+  imports: [AppCommonModule, AuthRoutingModule],
   exports: [],
   declarations: [LoginPage, RegisterPage],
   providers: [],
 })
-export class MemberModule {}
+export class AuthModule {}
