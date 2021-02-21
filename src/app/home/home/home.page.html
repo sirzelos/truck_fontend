@@ -1,0 +1,4 @@
+<ion-content>
+  <div *ngIf="loggedIn">{{user?.name}}</div>
+  <button *ngIf="loggedIn" (click)="logout()">logout</button>
+</ion-content>

@@ -25,3 +25,9 @@ button {
   border-radius: 10px;
   background-color: #62cc6b;
 }
+.error-box {
+  height: 25px;
+  font-size: 14px;
+  color: var(--ion-color-danger) !important;
+  font-weight: 300;
+}

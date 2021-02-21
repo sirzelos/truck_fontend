@@ -11,17 +11,25 @@ ion-toolbar {
 ion-item {
   --border-color: #000;
   margin-top: 16px;
+  --padding-start: 0px;
+  --min-height: 63px;
 }
 ion-icon {
   color: black;
 }
 button {
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   outline: none;
   width: 100%;
   display: block;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #62cc6b;
+}
+.error-box {
+  height: 25px;
+  font-size: 14px;
+  color: var(--ion-color-danger) !important;
+  font-weight: 300;
 }

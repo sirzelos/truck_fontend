@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Plugins } from "@capacitor/core";
 import { DataService } from "./services/data.service";
 const { SplashScreen } = Plugins;
@@ -8,13 +8,16 @@ const { SplashScreen } = Plugins;
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   employees: any;
   constructor() {
     this.initializeApp();
   }
 
-  async ngOnInit() {
+  loggedIn = false;
+
+  ngOnInit() {
+    this.loggedIn = localStorage.getItem("token") !== null;
     // let data = await this.dtService.getData().toPromise();
     // console.log(data);
   }
