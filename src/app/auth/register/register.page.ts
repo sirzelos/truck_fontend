@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { LoadingController } from "@ionic/angular";
 
 @Component({
   selector: "app-register",
@@ -22,7 +23,8 @@ export class RegisterPage implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private loadingController: LoadingController
   ) {
     this.form = this.fb.group({
       name: ["", Validators.required],
@@ -62,6 +64,8 @@ export class RegisterPage implements OnInit {
     if (this.form.invalid && this.passwordNotMath) {
       return;
     }
+    const loading = await this.loadingController.create();
+    await loading.present();
     const formData: any = this.form.value;
 
     const data = {
@@ -96,6 +100,7 @@ export class RegisterPage implements OnInit {
         console.log(error);
       }
     );
+    await loading.dismiss();
   }
 
   markAsTouchedAllfield() {

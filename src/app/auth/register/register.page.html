@@ -69,7 +69,7 @@
         <ion-input
           formControlName="password_confirmation"
           type="password"
-          maxlength="10"
+          maxlength="15"
           minlength="5"
           required
         >
@@ -79,10 +79,14 @@
         class="error-box"
         *ngIf="isInvalid('password_confirmation') || passwordNotMath"
       >
-        <span *ngIf="form?.get('password_confirmation')?.errors?.required">
+        <span
+          *ngIf="form?.get('password_confirmation')?.errors?.required && this.form.get('password_confirmation').touched"
+        >
           โปรดระบุยืนยันรหัสผ่าน
         </span>
-        <span *ngIf="form?.get('password_confirmation')?.errors?.minlength">
+        <span
+          *ngIf="form?.get('password_confirmation')?.errors?.minlength && this.form.get('password_confirmation').touched"
+        >
           โปรดระบุรหัสผ่านอย่างน้อย5ตัว
         </span>
         <span

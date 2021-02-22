@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
 
   constructor(private http: HttpClient, private readonly router: Router) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loggedIn = localStorage.getItem("token") !== null;
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -23,6 +23,7 @@ export class HomePage implements OnInit {
       .get("http://127.0.0.1:8000/user", { headers: headers })
       .subscribe((result) => (this.user = result));
   }
+  ionViewWillEnter() {}
 
   logout() {
     localStorage.removeItem("token");

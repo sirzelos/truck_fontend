@@ -1,0 +1,17 @@
+ion-toolbar {
+  --background: rgba(235, 206, 130);
+}
+ion-content {
+  --ion-background-color: rgba(235, 206, 130);
+}
+ion-toolbar {
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+button {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  background-color: #62cc6b;
+}

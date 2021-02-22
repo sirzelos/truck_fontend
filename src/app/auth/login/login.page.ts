@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { LoadingController } from "@ionic/angular";
 
 @Component({
   selector: "app-login",
@@ -14,7 +15,8 @@ export class LoginPage implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private loadingController: LoadingController
   ) {
     this.form = this.fb.group({
       email: ["", Validators.required],
@@ -48,7 +50,7 @@ export class LoginPage implements OnInit {
     this.form.markAllAsTouched();
   }
 
-  login() {
+  async login() {
     this.markAsTouchedAllfield();
     if (this.form.invalid) {
       return;
@@ -63,7 +65,8 @@ export class LoginPage implements OnInit {
       client_secret: "8aJ6rnFzOr18FFJ9aBPd7VW83Mn7orj26pP3Bmw0",
       scope: "*",
     };
-    console.log(data);
+    const loading = await this.loadingController.create();
+    await loading.present();
 
     this.http.post("http://127.0.0.1:8000/oauth/token", data).subscribe(
       (result: any) => {
@@ -77,5 +80,6 @@ export class LoginPage implements OnInit {
         console.log(error);
       }
     );
+    await loading.dismiss();
   }
 }
