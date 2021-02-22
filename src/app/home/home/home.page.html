@@ -9,15 +9,18 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div *ngIf="loggedIn">
+  <div *ngIf="loggedIn && isloadSuccess">
     <ion-grid fixed>
-      <ion-row> ชื่อ-นามสกุล : {{user?.name}} </ion-row>
-      <ion-row> อีเมล : {{user?.email}} </ion-row>
-      <ion-row> ตำแหน่ง : {{user?.role}} </ion-row>
+      <ion-row style="color: red"> ชื่อ-นามสกุล : </ion-row>
+      <ion-row> {{user?.name}} </ion-row>
+      <ion-row style="color: red"> อีเมล : </ion-row>
+      <ion-row> {{user?.email}} </ion-row>
+      <ion-row style="color: red"> ตำแหน่ง : </ion-row>
+      <ion-row> {{user?.role}} </ion-row>
     </ion-grid>
-  </div>
 
-  <button style="margin-top: 20px" *ngIf="loggedIn" (click)="logout()">
-    logout
-  </button>
+    <button style="margin-top: 20px" *ngIf="loggedIn" (click)="logout()">
+      logout
+    </button>
+  </div>
 </ion-content>

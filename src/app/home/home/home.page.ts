@@ -12,6 +12,8 @@ export class HomePage implements OnInit {
 
   loggedIn = false;
 
+  isloadSuccess = false;
+
   constructor(private http: HttpClient, private readonly router: Router) {}
 
   async ngOnInit() {
@@ -19,9 +21,11 @@ export class HomePage implements OnInit {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     });
-    this.http
+    await this.http
       .get("http://127.0.0.1:8000/user", { headers: headers })
-      .subscribe((result) => (this.user = result));
+      .subscribe(
+        (result) => ((this.user = result), (this.isloadSuccess = true))
+      );
   }
   ionViewWillEnter() {}
 
