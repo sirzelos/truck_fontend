@@ -62,7 +62,7 @@ export class LoginPage implements OnInit {
       password: formData.password,
       grant_type: "password",
       client_id: 2,
-      client_secret: "8aJ6rnFzOr18FFJ9aBPd7VW83Mn7orj26pP3Bmw0",
+      client_secret: "9ouW0JKTA7c51fzKYPMPjJ5y0DOD57cOO3boPziS",
       scope: "*",
     };
     const loading = await this.loadingController.create();
@@ -78,6 +78,7 @@ export class LoginPage implements OnInit {
       (error) => {
         console.log("error");
         console.log(error);
+        this.form.get("password").setErrors({ match: true });
       }
     );
     await loading.dismiss();

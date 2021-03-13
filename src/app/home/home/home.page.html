@@ -1,26 +1,26 @@
 <ion-header mode="ios">
   <ion-toolbar>
-    <!-- <ion-buttons slot="start">
-      <ion-button (click)="back()">
-        <ion-icon size="large" name="arrow-back-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons> -->
-    <ion-title>Welcome</ion-title>
+    <ion-title>ข้อมูลส่วนตัว</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div *ngIf="loggedIn && isloadSuccess">
-    <ion-grid fixed>
-      <ion-row style="color: red"> ชื่อ-นามสกุล : </ion-row>
-      <ion-row> {{user?.name}} </ion-row>
-      <ion-row style="color: red"> อีเมล : </ion-row>
-      <ion-row> {{user?.email}} </ion-row>
-      <ion-row style="color: red"> ตำแหน่ง : </ion-row>
-      <ion-row> {{user?.role}} </ion-row>
-    </ion-grid>
+    <div style="padding: 24px">
+      <ion-grid fixed>
+        <ion-row style="color: red"> ชื่อ-นามสกุล : </ion-row>
+        <ion-row> {{user?.name}} </ion-row>
+        <ion-row style="color: red"> อีเมล : </ion-row>
+        <ion-row> {{user?.email}} </ion-row>
+        <ion-row style="color: red"> ตำแหน่ง : </ion-row>
+        <ion-row> {{user?.role}} </ion-row>
+        <ion-row style="color: red" *ngIf="user?.role==='บริษัทขนส่ง'">
+          รายละเอียดขนส่ง :
+        </ion-row>
+      </ion-grid>
 
-    <button style="margin-top: 20px" *ngIf="loggedIn" (click)="logout()">
-      logout
-    </button>
+      <button style="margin-top: 20px" *ngIf="loggedIn" (click)="logout()">
+        logout
+      </button>
+    </div>
   </div>
 </ion-content>

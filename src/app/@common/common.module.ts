@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
+import { ShowHidePasswordComponent } from "./show-hide-password/show-hide-password.component";
 
 const BASE_MODULES = [
   CommonModule,
@@ -9,7 +10,7 @@ const BASE_MODULES = [
   ReactiveFormsModule,
   IonicModule,
 ];
-const COMPONENTS = [];
+const COMPONENTS = [ShowHidePasswordComponent];
 const PROVIDERS = [];
 const PIPES = [];
 

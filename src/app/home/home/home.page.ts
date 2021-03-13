@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Authentication } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-home",
@@ -14,23 +15,21 @@ export class HomePage implements OnInit {
 
   isloadSuccess = false;
 
-  constructor(private http: HttpClient, private readonly router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private readonly router: Router,
+    private readonly auth: Authentication
+  ) {}
 
   async ngOnInit() {
-    this.loggedIn = localStorage.getItem("token") !== null;
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    });
-    await this.http
-      .get("http://127.0.0.1:8000/user", { headers: headers })
-      .subscribe(
-        (result) => ((this.user = result), (this.isloadSuccess = true))
-      );
+    this.loggedIn = this.auth.isLoggedIn();
+    this.user = await this.auth.currentUser();
+    this.isloadSuccess = true;
   }
   ionViewWillEnter() {}
 
   logout() {
-    localStorage.removeItem("token");
+    this.auth.logout();
     this.router.navigate(["title"]);
   }
 }
