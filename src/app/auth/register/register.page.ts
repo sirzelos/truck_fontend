@@ -84,7 +84,7 @@ export class RegisterPage implements OnInit {
       password: formData.password,
       grant_type: "password",
       client_id: 2,
-      client_secret: "9ouW0JKTA7c51fzKYPMPjJ5y0DOD57cOO3boPziS",
+      client_secret: "3iClOwbjW8ufOXsdP6fmjCgxPdeYzJthUcaiCdcZ",
       scope: "*",
     };
 
@@ -93,7 +93,7 @@ export class RegisterPage implements OnInit {
         console.log("success");
 
         localStorage.setItem("token", result.access_token);
-        this.router.navigate(["home"]);
+        this.router.navigate(["profile"]);
       },
       (error) => {
         console.log("error");

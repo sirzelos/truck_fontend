@@ -1,0 +1,67 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-title>ข้อมูลส่วนตัว</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="loggedIn && isloadSuccess">
+    <div style="padding: 24px">
+      <ion-grid fixed>
+        <ion-row style="color: red"> ชื่อ-นามสกุล : </ion-row>
+        <ion-row> {{user?.name}} </ion-row>
+        <ion-row style="color: red"> อีเมล : </ion-row>
+        <ion-row> {{user?.email}} </ion-row>
+        <ion-row style="color: red"> ตำแหน่ง : </ion-row>
+        <ion-row> {{user?.role}} </ion-row>
+        <ng-container *ngIf="user?.role==='บริษัทขนส่ง'">
+          <ion-row style="color: red" *ngIf=" detailShippingCompany">
+            รายละเอียดขนส่ง :
+          </ion-row>
+          <ion-row *ngIf="detailShippingCompany">
+            <div style="color: black">
+              ประเภทของที่จัดส่ง :{{detailShippingCompany?.product_type}}<br />
+              ค่าน้ำมัน(เต็มถัง) : {{detailShippingCompany?.oil_cost}} บาท
+              <br />
+              ของน้ำหนัก {{detailShippingCompany?.mini_weight}} กิโลกรัมแรก
+              <br />
+              กรุงเทพ : {{detailShippingCompany?.bangkok_mini_weight_cost}} บาท
+              <br />
+              ภาคกลาง : {{detailShippingCompany?.central_mini_weight_cost}} บาท
+              <br />
+              ภาคกลาง : {{detailShippingCompany?.central_mini_weight_cost}} บาท
+              <br />
+              ภาคเหนือ : {{detailShippingCompany?.north_mini_weight_cost}} บาท
+              <br />
+              ภาคอีสาน : {{detailShippingCompany?.northeast_mini_weight_cost}}
+              บาท
+              <br />
+              ภาคตะวันออก : {{detailShippingCompany?.east_mini_weight_cost}} บาท
+              <br />
+              ภาคตะวันตก : {{detailShippingCompany?.west_mini_weight_cost}} บาท
+              <br />
+              ภาคใต้ : {{detailShippingCompany?.south_mini_weight_cost}} บาท
+              <br />
+              กิโลกรัมต่อไป : {{detailShippingCompany?.weight_to_kk}} บาท
+            </div>
+          </ion-row>
+        </ng-container>
+      </ion-grid>
+      <button
+        *ngIf="!detailShippingCompany"
+        class="btn-add-detail-ship"
+        style="margin-top: 50px"
+        (click)="addDetailShippingCompany()"
+      >
+        เพิ่มรายละเอียดขนส่ง
+      </button>
+      <button
+        class="btn-submit"
+        style="margin-top: 50px"
+        *ngIf="loggedIn"
+        (click)="logout()"
+      >
+        ออกจากระบบ
+      </button>
+    </div>
+  </div>
+</ion-content>

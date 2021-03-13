@@ -20,7 +20,7 @@ export class TitleComponent implements OnInit {
   ionViewWillEnter() {
     if (this.auth.isLoggedIn()) {
       setTimeout(() => {
-        this.router.navigate(["home"]);
+        this.router.navigate(["profile"]);
       }, 4000);
     } else {
       setTimeout(() => {

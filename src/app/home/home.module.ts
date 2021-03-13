@@ -1,4 +1,4 @@
-import { HomePage } from "./home/home.page";
+import { ProfilePage } from "./profile/profile.page";
 import { Title2Page } from "./title2/title2.page";
 import { HomeRoutingModule } from "./home-routing.module";
 import { NgModule } from "@angular/core";
@@ -9,7 +9,7 @@ import { TitleComponent } from "./title/title.page";
 @NgModule({
   imports: [AppCommonModule, HomeRoutingModule],
   exports: [],
-  declarations: [TitleComponent, Title2Page, HomePage],
+  declarations: [TitleComponent, Title2Page, ProfilePage],
   providers: [],
 })
 export class HomeModule {}
