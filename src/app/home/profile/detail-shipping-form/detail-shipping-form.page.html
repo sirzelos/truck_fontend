@@ -1,0 +1,178 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>เพิ่มรายละเอียดขนส่ง</ion-title>
+  </ion-toolbar> </ion-header
+><ion-content fullscreen>
+  <form [formGroup]="form">
+    <div style="padding: 16px">
+      <ion-item>
+        <ion-label position="floating">ประเภทของที่รับขนส่ง </ion-label>
+        <ion-input formControlName="product_type" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('product_type')">
+        <span *ngIf="form?.get('product_type')?.errors?.required">
+          โปรดระบุประเภทของที่รับขนส่ง
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">ค่าน้ำมัน/เต็มถัง </ion-label>
+        <ion-input formControlName="oil_cost" type="text" required> </ion-input>
+        <div class="addon">บาท</div>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('oil_cost')">
+        <span *ngIf="form?.get('oil_cost')?.errors?.required">
+          โปรดระบุประเภทค่าน้ำมัน/เต็มถัง
+        </span>
+      </div>
+      <h1>กำหนดราคาขั้นต่ำต่อน้ำหนักสินค้า</h1>
+      <ion-item>
+        <ion-label position="floating">น้ำหนักสินค้าขั้นต่ำ </ion-label>
+        <ion-input formControlName="mini_weight" min="1" type="number" required>
+        </ion-input>
+        <div class="addon">กิโลกรัม</div>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('mini_weight')">
+        <span *ngIf="form?.get('mini_weight')?.errors?.required">
+          โปรดระบุน้ำหนักสินค้าขั้นต่ำ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating"
+          >ราคาขนส่งภายในกรุงเทพมหานคร/น้ำหนักสินค้าขั้นต่ำ
+        </ion-label>
+        <ion-input
+          formControlName="bangkok_mini_weight_cost"
+          type="number"
+          required
+        >
+        </ion-input>
+        <div class="addon">บาท</div>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('bangkok_mini_weight_cost')">
+        <span *ngIf="form?.get('bangkok_mini_weight_cost')?.errors?.required">
+          โปรดระบุราคาขนส่งภายในกรุงเทพมหานคร/น้ำหนักสินค้าขั้นต่ำ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating"
+          >ราคาขนส่งที่ภาคกลาง/น้ำหนักสินค้าขั้นต่ำ
+        </ion-label>
+        <ion-input
+          formControlName="central_mini_weight_cost"
+          type="number"
+          required
+        >
+        </ion-input>
+        <div class="addon">บาท</div>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('central_mini_weight_cost')">
+        <span *ngIf="form?.get('central_mini_weight_cost')?.errors?.required">
+          โปรดระบุราคาขนส่งที่ภาคกลาง/น้ำหนักสินค้าขั้นต่ำ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating"
+          >ราคาขนส่งที่ภาคตะวันออก/น้ำหนักสินค้าขั้นต่ำ
+        </ion-label>
+        <ion-input
+          formControlName="east_mini_weight_cost"
+          type="number"
+          required
+        >
+        </ion-input>
+        <div class="addon">บาท</div>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('east_mini_weight_cost')">
+        <span *ngIf="form?.get('east_mini_weight_cost')?.errors?.required">
+          โปรดระบุราคาขนส่งที่ภาคตะวันออกเ/น้ำหนักสินค้าขั้นต่ำ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating"
+          >ราคาขนส่งที่ภาคเหนือ/น้ำหนักสินค้าขั้นต่ำ
+        </ion-label>
+        <ion-input
+          formControlName="north_mini_weight_cost"
+          type="number"
+          required
+        >
+        </ion-input>
+        <div class="addon">บาท</div>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('north_mini_weight_cost')">
+        <span *ngIf="form?.get('north_mini_weight_cost')?.errors?.required">
+          โปรดระบุราคาขนส่งที่ภาคเหนือ/น้ำหนักสินค้าขั้นต่ำ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating"
+          >ราคาขนส่งที่ภาคตะวันออกเฉียงเหนือ/น้ำหนักสินค้าขั้นต่ำ
+        </ion-label>
+        <ion-input
+          formControlName="northeast_mini_weight_cost"
+          type="number"
+          required
+        >
+        </ion-input>
+        <div class="addon">บาท</div>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('northeast_mini_weight_cost')">
+        <span *ngIf="form?.get('northeast_mini_weight_cost')?.errors?.required">
+          โปรดระบุราคาขนส่งที่ภาคตะวันออกเฉียงเหนือ/น้ำหนักสินค้าขั้นต่ำ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating"
+          >ราคาขนส่งที่ภาคตะวันตก/น้ำหนักสินค้าขั้นต่ำ
+        </ion-label>
+        <ion-input
+          formControlName="west_mini_weight_cost"
+          type="number"
+          required
+        >
+        </ion-input>
+        <div class="addon">บาท</div>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('west_mini_weight_cost')">
+        <span *ngIf="form?.get('west_mini_weight_cost')?.errors?.required">
+          โปรดระบุราคาขนส่งที่ภาคตะวันตก/น้ำหนักสินค้าขั้นต่ำ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating"
+          >ราคาขนส่งที่ภาคใต้/น้ำหนักสินค้าขั้นต่ำ
+        </ion-label>
+        <ion-input
+          formControlName="south_mini_weight_cost"
+          type="number"
+          required
+        >
+        </ion-input>
+        <div class="addon">บาท</div>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('south_mini_weight_cost')">
+        <span *ngIf="form?.get('south_mini_weight_cost')?.errors?.required">
+          โปรดระบุราคาขนส่งที่ภาคใต้/น้ำหนักสินค้าขั้นต่ำ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">กิโลกรัมต่อไปราคากิโลกรัมล่ะ </ion-label>
+        <ion-input formControlName="weight_to_kk" type="number" required>
+        </ion-input>
+        <div class="addon">บาท</div>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('weight_to_kk')">
+        <span *ngIf="form?.get('weight_to_kk')?.errors?.required">
+          โปรดระบุกิโลกรัมต่อไปราคากิโลกรัมล่ะ
+        </span>
+      </div>
+      <button style="margin-top: 16px" (click)="save()">บันทึก</button>
+    </div>
+  </form>
+</ion-content>

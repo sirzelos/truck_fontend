@@ -1,0 +1,32 @@
+.home-footer {
+  background-color: orange;
+  position: fixed;
+  bottom: 0;
+  transition: all 0.5s;
+  transform: translateY(0%);
+  &.active {
+    transition: all 0.5s;
+    transform: translateY(155%);
+  }
+}
+.footer-item {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-style: solid;
+}
+ion-grid {
+  --ion-grid-padding: 0;
+  --ion-grid-column-padding: 0;
+  ion-col {
+    &:first-child {
+      padding-inline-start: 0;
+    }
+    &:last-child {
+      padding-inline-end: 0;
+    }
+  }
+}

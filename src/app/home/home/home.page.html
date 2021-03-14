@@ -1,0 +1,16 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-title>หน้าแรก</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list *ngFor="let item of data">
+    <ion-item>
+      ชื่อบริษัท : {{item?.name}}<br />ประเภทของที่ขนส่ง :{{
+      item?.product_type}}<br />
+      {{ item?.mini_weight}} กิโลกรัมแรก ราคาประมาณ {{item?.approximate_price}}
+      บาท</ion-item
+    >
+  </ion-list>
+</ion-content>
+<app-footer></app-footer>

@@ -46,17 +46,27 @@
           </ion-row>
         </ng-container>
       </ion-grid>
-      <button
-        *ngIf="!detailShippingCompany"
-        class="btn-add-detail-ship"
-        style="margin-top: 50px"
-        (click)="addDetailShippingCompany()"
-      >
-        เพิ่มรายละเอียดขนส่ง
-      </button>
+      <ng-container *ngIf="user?.role==='บริษัทขนส่ง'">
+        <button
+          *ngIf="!detailShippingCompany"
+          class="btn-add-detail-ship"
+          style="margin-top: 50px"
+          (click)="addDetailShippingCompany()"
+        >
+          เพิ่มรายละเอียดขนส่ง
+        </button>
+        <button
+          *ngIf="detailShippingCompany"
+          class="btn-add-detail-ship"
+          style="margin-top: 50px"
+          (click)="editDetailShippingCompany()"
+        >
+          แก้ไขรายละเอียดขนส่ง
+        </button>
+      </ng-container>
       <button
         class="btn-submit"
-        style="margin-top: 50px"
+        style="margin-top: 16px"
         *ngIf="loggedIn"
         (click)="logout()"
       >
@@ -65,3 +75,4 @@
     </div>
   </div>
 </ion-content>
+<app-footer></app-footer>

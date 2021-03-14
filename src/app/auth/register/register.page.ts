@@ -91,8 +91,8 @@ export class RegisterPage implements OnInit {
     this.http.post("http://127.0.0.1:8000/oauth/token", auth).subscribe(
       (result: any) => {
         console.log("success");
+        window.localStorage.setItem("token", result.access_token);
 
-        localStorage.setItem("token", result.access_token);
         this.router.navigate(["profile"]);
       },
       (error) => {

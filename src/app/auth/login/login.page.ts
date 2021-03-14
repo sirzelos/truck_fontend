@@ -72,7 +72,7 @@ export class LoginPage implements OnInit {
       (result: any) => {
         console.log("success");
         console.log(result);
-        localStorage.setItem("token", result.access_token);
+        window.localStorage.setItem("token", result.access_token);
         this.router.navigate(["profile"]);
       },
       (error) => {

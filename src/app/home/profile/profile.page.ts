@@ -28,7 +28,6 @@ export class ProfilePage implements OnInit {
   async ngOnInit() {
     this.loggedIn = this.auth.isLoggedIn();
     this.user = await this.auth.currentUser();
-    console.log(this.user);
 
     if (this.user?.role === "บริษัทขนส่ง") {
       this.loadDetailShippingCompany();
@@ -42,10 +41,23 @@ export class ProfilePage implements OnInit {
     );
     console.log(this.detailShippingCompany);
   }
-  ionViewWillEnter() {}
+  async ionViewWillEnter() {
+    this.loggedIn = this.auth.isLoggedIn();
+    this.user = await this.auth.currentUser();
+    console.log(this.user);
+
+    if (this.user?.role === "บริษัทขนส่ง") {
+      this.loadDetailShippingCompany();
+    }
+    this.isloadSuccess = true;
+  }
 
   addDetailShippingCompany() {
-    // this.router.navigate([])
+    this.router.navigate(["detail-shipping-form", "new"]);
+  }
+
+  editDetailShippingCompany() {
+    this.router.navigate(["detail-shipping-form", "edit"]);
   }
 
   logout() {
