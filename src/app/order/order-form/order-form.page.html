@@ -1,0 +1,257 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>รายละเอียดการจ้าง</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="form">
+    <div style="padding: 16px">
+      <h1>สินค้าที่ให้ขนส่ง</h1>
+      <ion-item>
+        <ion-label position="floating">ของที่ให้ส่ง </ion-label>
+        <ion-input formControlName="product_type" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('product_type')">
+        <span *ngIf="form?.get('product_type')?.errors?.required">
+          โปรดระบุของที่ให้ส่ง
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">น้ำหนักของ </ion-label>
+        <ion-input formControlName="weight_product" type="text" required>
+          <div class="addon">กิโลกรัม</div>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('weight_product')">
+        <span *ngIf="form?.get('weight_product')?.errors?.required">
+          โปรดระบุน้ำหนักของ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label>เลือกภาคที่ให้ไปส่ง</ion-label>
+        <ion-select value="form.value.sector" formControlName="sector">
+          <ion-label>เลือกภาคที่ให้ไปส่ง</ion-label>
+          <ion-select-option
+            value="กรุงเทพมหานคร"
+            (click)="selectSector('กรุงเทพมหานคร')"
+            >กรุงเทพมหานคร</ion-select-option
+          >
+          <ion-select-option value="ภาคกลาง" (click)="selectSector('ภาคกลาง')"
+            >ภาคกลาง</ion-select-option
+          >
+          <ion-select-option value="ภาคเหนือ" (click)="selectSector('ภาคเหนือ')"
+            >ภาคเหนือ</ion-select-option
+          >
+          <ion-select-option value="ภาคอีสาน" (click)="selectSector('ภาคอีสาน')"
+            >ภาคอีสาน</ion-select-option
+          >
+          <ion-select-option
+            value="ภาคตะวันออก"
+            (click)="selectSector('ภาคตะวันออก')"
+            >ภาคตะวันออก</ion-select-option
+          >
+          <ion-select-option
+            value="ภาคตะวันตก"
+            (click)="selectSector('ภาคตะวันตก')"
+            >ภาคตะวันตก</ion-select-option
+          >
+          <ion-select-option value="ภาคใต้" (click)="selectSector('ภาคใต้')"
+            >ภาคใต้
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('sector')">
+        <span *ngIf="form?.get('sector')?.errors?.required"> โปรดระบุภาค </span>
+      </div>
+      <h1>วันที่ให้ส่งของ/รับของ</h1>
+      <ion-item>
+        <ion-label>วันที่ให้รับของ</ion-label>
+        <ion-datetime
+          formControlName="pick_up_date"
+          displayFormat="D MMM YYYY H:mm"
+          [min]="now"
+          max="2100-12-31"
+        ></ion-datetime>
+      </ion-item>
+
+      <div class="error-box" *ngIf="isInvalid('pick_up_date')">
+        <span *ngIf="form?.get('pick_up_date')?.errors?.required">
+          โปรดระบุวันที่ให้รับของ
+        </span>
+      </div>
+
+      <ion-item>
+        <ion-label>วันที่ให้ส่งของ</ion-label>
+        <ion-datetime
+          formControlName="delivery_date"
+          displayFormat="D MMM YYYY H:mm"
+          [min]="dDate"
+          max="2100-12-31"
+        ></ion-datetime>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('delivery_date')">
+        <span *ngIf="form?.get('delivery_date')?.errors?.required">
+          โปรดระบุวันที่ให้ส่งของ
+        </span>
+      </div>
+      <h1>ที่อยู่ที่ให้รับของ</h1>
+
+      <ion-item>
+        <ion-label position="floating">ชื่อ/บริษิท </ion-label>
+        <ion-input formControlName="name_giver" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('name_giver')">
+        <span *ngIf="form?.get('name_giver')?.errors?.required">
+          โปรดระบุชื่อ/บริษิท
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">รายละเอียดที่อยู่ </ion-label>
+        <ion-input formControlName="detail_address_giver" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('detail_address_giver')">
+        <span *ngIf="form?.get('detail_address_giver')?.errors?.required">
+          โปรดระบุรายละเอียดที่อยู่
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">แขวง/ตำบล </ion-label>
+        <ion-input formControlName="subdistrict_giver" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('subdistrict_giver')">
+        <span *ngIf="form?.get('subdistrict_giver')?.errors?.required">
+          โปรดระบุแขวง/ตำบล
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">เขต/อำเภอ </ion-label>
+        <ion-input formControlName="district_giver" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('district_giver')">
+        <span *ngIf="form?.get('district_giver')?.errors?.required">
+          โปรดระบุเขต/อำเภอ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">จังหวัด </ion-label>
+        <ion-input formControlName="province_giver" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('province_giver')">
+        <span *ngIf="form?.get('province_giver')?.errors?.required">
+          โปรดระบุจังหวัด
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">รหัสไปรษณีย์ </ion-label>
+        <ion-input formControlName="postCode_giver" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('postCode_giver')">
+        <span *ngIf="form?.get('postCode_giver')?.errors?.required">
+          โปรดระบุรหัสไปรษณีย์
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">เบอร์มือถือ </ion-label>
+        <ion-input formControlName="tel_giver" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('tel_giver')">
+        <span *ngIf="form?.get('tel_giver')?.errors?.required">
+          โปรดระบุเบอร์มือถือ
+        </span>
+      </div>
+      <h1>ที่อยู่ที่ให้ไปส่ง</h1>
+      <ion-item>
+        <ion-label position="floating">ชื่อ/บริษิท </ion-label>
+        <ion-input formControlName="name_recipient" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('name_recipient')">
+        <span *ngIf="form?.get('name_recipient')?.errors?.required">
+          โปรดระบุชื่อ/บริษิท
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">รายละเอียดที่อยู่ </ion-label>
+        <ion-input
+          formControlName="detail_address_recipient"
+          type="text"
+          required
+        >
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('detail_address_recipient')">
+        <span *ngIf="form?.get('detail_address_recipient')?.errors?.required">
+          โปรดระบุรายละเอียดที่อยู่
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">แขวง/ตำบล </ion-label>
+        <ion-input formControlName="subdistrict_recipient" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('subdistrict_recipient')">
+        <span *ngIf="form?.get('subdistrict_recipient')?.errors?.required">
+          โปรดระบุแขวง/ตำบล
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">เขต/อำเภอ </ion-label>
+        <ion-input formControlName="district_recipient" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('district_recipient')">
+        <span *ngIf="form?.get('district_recipient')?.errors?.required">
+          โปรดระบุเขต/อำเภอ
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">จังหวัด </ion-label>
+        <ion-input formControlName="province_recipient" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('province_recipient')">
+        <span *ngIf="form?.get('province_recipient')?.errors?.required">
+          โปรดระบุจังหวัด
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">รหัสไปรษณีย์ </ion-label>
+        <ion-input formControlName="postCode_recipient" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('postCode_recipient')">
+        <span *ngIf="form?.get('postCode_recipient')?.errors?.required">
+          โปรดระบุรหัสไปรษณีย์
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">เบอร์มือถือ </ion-label>
+        <ion-input formControlName="tel_recipient" type="text" required>
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('tel_recipient')">
+        <span *ngIf="form?.get('tel_recipient')?.errors?.required">
+          โปรดระบุเบอร์มือถือ
+        </span>
+      </div>
+      <div style="margin-top: 16px; padding: 8px; background-color: cadetblue">
+        <div style="font-weight: bold">สรุปราคาค่าส่ง</div>
+        <div>{{price ||0}} บาท</div>
+      </div>
+      <button style="margin-top: 16px" (click)="save()">จ้าง</button>
+    </div>
+  </form>
+</ion-content>

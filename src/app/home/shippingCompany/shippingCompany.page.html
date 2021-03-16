@@ -1,0 +1,62 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{user?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div>
+    <div style="padding: 24px">
+      <ion-grid fixed>
+        <ion-row style="color: red"> ชื่อ-นามสกุล/ชื่อบริษัท : </ion-row>
+        <ion-row>{{user?.name}} </ion-row>
+        <ion-row style="color: red"> อีเมล : </ion-row>
+        <ion-row> {{user?.email}} </ion-row>
+        <ng-container *ngIf="user?.role==='บริษัทขนส่ง'">
+          <ion-row style="color: red" *ngIf=" detailShippingCompany">
+            รายละเอียดขนส่ง :
+          </ion-row>
+          <ion-row *ngIf="detailShippingCompany">
+            <div style="color: black">
+              ประเภทของที่จัดส่ง :{{detailShippingCompany?.product_type}}<br />
+              ค่าน้ำมัน(เต็มถัง) : {{detailShippingCompany?.oil_cost}} บาท
+              <br />
+              ของน้ำหนัก {{detailShippingCompany?.mini_weight}} กิโลกรัมแรก
+              <br />
+              กรุงเทพ : {{detailShippingCompany?.bangkok_mini_weight_cost}} บาท
+              <br />
+              ภาคกลาง : {{detailShippingCompany?.central_mini_weight_cost}} บาท
+              <br />
+              ภาคกลาง : {{detailShippingCompany?.central_mini_weight_cost}} บาท
+              <br />
+              ภาคเหนือ : {{detailShippingCompany?.north_mini_weight_cost}} บาท
+              <br />
+              ภาคอีสาน : {{detailShippingCompany?.northeast_mini_weight_cost}}
+              บาท
+              <br />
+              ภาคตะวันออก : {{detailShippingCompany?.east_mini_weight_cost}} บาท
+              <br />
+              ภาคตะวันตก : {{detailShippingCompany?.west_mini_weight_cost}} บาท
+              <br />
+              ภาคใต้ : {{detailShippingCompany?.south_mini_weight_cost}} บาท
+              <br />
+              กิโลกรัมต่อไป : {{detailShippingCompany?.weight_to_kk}} บาท
+            </div>
+          </ion-row>
+        </ng-container>
+      </ion-grid>
+      <button
+        style="margin-top: 8px"
+        class="btn-submit"
+        *ngIf="role==='ผู้จ้าง'"
+        (click)="hire()"
+      >
+        จ้าง
+      </button>
+    </div>
+  </div>
+</ion-content>

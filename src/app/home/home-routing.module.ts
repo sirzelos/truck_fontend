@@ -6,6 +6,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { TitleComponent } from "./title/title.page";
 import { DetailShippingFormPage } from "./profile/detail-shipping-form/detail-shipping-form.page";
+import { ShippingCompanyPage } from "./shippingCompany/shippingCompany.page";
 
 export const routes: Routes = [
   { path: "", component: TitleComponent },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: "title", component: Title2Page },
   { path: "profile", component: ProfilePage },
   { path: "detail-shipping-form/:mode", component: DetailShippingFormPage },
+  { path: "detailShippingCompany/:id", component: ShippingCompanyPage },
 ];
 
 @NgModule({

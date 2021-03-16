@@ -4,13 +4,25 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
-  <ion-list *ngFor="let item of data">
-    <ion-item>
-      ชื่อบริษัท : {{item?.name}}<br />ประเภทของที่ขนส่ง :{{
-      item?.product_type}}<br />
-      {{ item?.mini_weight}} กิโลกรัมแรก ราคาประมาณ {{item?.approximate_price}}
-      บาท</ion-item
-    >
-  </ion-list>
+  <div>
+    <div style="height: 4px; background-color: #000000; width: 100%"></div>
+    <ion-list *ngFor="let item of data">
+      <ion-item lines="none">
+        ชื่อบริษัท : {{item?.name}}<br />ประเภทของที่ขนส่ง :{{
+        item?.product_type}}<br />
+        {{ item?.mini_weight}} กิโลกรัมแรก ราคาประมาณ
+        {{item?.approximate_price}} บาท
+      </ion-item>
+      <button
+        (click)="showDetail(item?.user_id)"
+        style="margin-top: 8px"
+        class="btn-submit"
+      >
+        ดูรายละเอียด
+      </button>
+
+      <div style="height: 4px; background-color: #000000; width: 100%"></div>
+    </ion-list>
+  </div>
 </ion-content>
 <app-footer></app-footer>

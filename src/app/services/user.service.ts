@@ -23,6 +23,27 @@ export class UsersService {
     const result = await this.http
       .post("http://127.0.0.1:8000/addDetailShippingCompany/", form)
       .toPromise();
+
+    return result;
+  }
+
+  async getUserByID(id: number): Promise<any> {
+    const result = await this.http
+      .get("http://127.0.0.1:8000/user/" + id)
+      .toPromise();
+    return result;
+  }
+  async createOrder(form: any): Promise<any> {
+    const result = await this.http
+      .post("http://127.0.0.1:8000/createOrder", form)
+      .toPromise();
+    return result;
+  }
+
+  async getMyOrder(id: number): Promise<any> {
+    const result = await this.http
+      .get("http://127.0.0.1:8000/myorder/" + id)
+      .toPromise();
     return result;
   }
 }

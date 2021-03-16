@@ -1,0 +1,54 @@
+ion-toolbar {
+  --background: rgba(235, 206, 130);
+}
+ion-content {
+  --ion-background-color: rgba(235, 206, 130);
+}
+ion-toolbar {
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+.btn-submit {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  background-color: #62cc6b;
+}
+ion-icon {
+  color: black;
+}
+
+.addon {
+  display: none;
+  height: 22px;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  font-size: 14px;
+  color: var(--neutrals-grey-07);
+}
+ion-item {
+  --border-color: #000;
+  margin-top: 16px;
+  --padding-start: 0px;
+  --min-height: 63px;
+}
+
+button {
+  color: white;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+  display: block;
+  height: 50px;
+  border-radius: 8px;
+  background-color: #62cc6b;
+}
+.error-box {
+  height: 25px;
+  font-size: 14px;
+  color: var(--ion-color-danger) !important;
+  font-weight: 300;
+}

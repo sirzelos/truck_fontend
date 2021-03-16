@@ -84,7 +84,7 @@ export class RegisterPage implements OnInit {
       password: formData.password,
       grant_type: "password",
       client_id: 2,
-      client_secret: "3iClOwbjW8ufOXsdP6fmjCgxPdeYzJthUcaiCdcZ",
+      client_secret: "ZR0jxS0SvMyvwSDgR6LiUxAe0sc94rWLX0ou6KeY",
       scope: "*",
     };
 

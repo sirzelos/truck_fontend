@@ -8,16 +8,13 @@ ion-toolbar {
   --padding-start: 0px;
   --padding-end: 0px;
 }
-ion-item {
-  --border-color: black;
-}
-span {
-  color: red;
-}
 .btn-submit {
   width: 100%;
   height: 40px;
   border-radius: 8px;
   color: white;
   background-color: #62cc6b;
+}
+ion-icon {
+  color: black;
 }

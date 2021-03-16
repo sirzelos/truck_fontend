@@ -26,6 +26,7 @@
     "@ionic/pwa-elements": "^1.5.2",
     "@ionic/storage": "^2.3.1",
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
     "rxjs": "^6.5.5",
     "tslib": "^1.11.1",
     "zone.js": "^0.10.3"

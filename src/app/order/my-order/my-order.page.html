@@ -1,0 +1,19 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-title>รายการของฉัน</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div style="height: 4px; background-color: #000000; width: 100%"></div>
+  <ion-list *ngFor="let item of orders">
+    <ion-item lines="none">
+      สถานะ : {{getStatus(item?.status)}}<br />ของที่ขนส่ง :{{
+      item?.product_type}}<br />
+      ค่าขนส่ง {{item?.cost}} บาท
+    </ion-item>
+    <button style="margin-top: 8px" class="btn-submit">ดูรายละเอียด</button>
+    <div style="height: 4px; background-color: #000000; width: 100%"></div>
+  </ion-list>
+  <div style="margin-bottom: 50px"></div>
+</ion-content>
+<app-footer></app-footer>
