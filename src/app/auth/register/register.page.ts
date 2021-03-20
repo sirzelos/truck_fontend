@@ -1,3 +1,4 @@
+import { Authentication } from "src/app/services/auth.service";
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -11,6 +12,7 @@ import { LoadingController } from "@ionic/angular";
 })
 export class RegisterPage implements OnInit {
   form: FormGroup;
+  error = false;
 
   get passwordNotMath(): boolean {
     if (this.form.value.password !== this.form.value.password_confirmation) {
@@ -24,7 +26,8 @@ export class RegisterPage implements OnInit {
     private readonly router: Router,
     private readonly fb: FormBuilder,
     private http: HttpClient,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private auth: Authentication
   ) {
     this.form = this.fb.group({
       name: ["", Validators.required],
@@ -78,13 +81,13 @@ export class RegisterPage implements OnInit {
     const response = await this.http
       .post("http://127.0.0.1:8000/register", data)
       .toPromise();
-
+    let client_secret = this.auth.getKey();
     const auth = {
       username: formData.email,
       password: formData.password,
       grant_type: "password",
       client_id: 2,
-      client_secret: "ZR0jxS0SvMyvwSDgR6LiUxAe0sc94rWLX0ou6KeY",
+      client_secret,
       scope: "*",
     };
 
@@ -92,10 +95,10 @@ export class RegisterPage implements OnInit {
       (result: any) => {
         console.log("success");
         window.localStorage.setItem("token", result.access_token);
-
         this.router.navigate(["profile"]);
       },
       (error) => {
+        this.error = true;
         console.log("error");
         console.log(error);
       }

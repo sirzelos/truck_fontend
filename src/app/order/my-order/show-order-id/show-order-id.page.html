@@ -1,0 +1,85 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>คำสั่งจ้าง</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div style="padding: 24px">
+    <ion-grid fixed>
+      <ion-grid fixed>
+        <ion-row style="color: red"> สถานะ : </ion-row>
+        <ion-row
+          [ngClass]="{'success': order?.status===3,'danger':order?.status===99||order?.status===55}"
+        >
+          {{status}}
+        </ion-row>
+        <ion-row style="color: red"> ของที่ให้ส่ง : </ion-row>
+        <ion-row> {{order?.product_type}} </ion-row>
+        <ion-row style="color: red"> น้ำหนักของ : </ion-row>
+        <ion-row> {{order?.weight_product}} </ion-row>
+        <ion-row style="color: red"> ราคารวม : </ion-row>
+        <ion-row> {{order?.cost}} </ion-row>
+        <ion-row style="color: red"> บริษัทที่รับคำสั่งจ้าง : </ion-row>
+        <ion-row> {{shippingCompany?.name}} </ion-row>
+        <ion-row style="color: red"> เบอร์บริษัทที่รับคำสั่งจ้าง: </ion-row>
+        <ion-row> {{shipDetail?.tel}} </ion-row>
+
+        <h1>วันที่และให้ส่งของ/รับของ</h1>
+        <ion-row style="color: red"> วันที่ให้ส่งของ : </ion-row>
+        <ion-row> {{order?.pick_up_date | date:"MM/dd/yy HH:mm"}} </ion-row>
+        <ion-row style="color: red"> วันที่ให้รับของ : </ion-row>
+        <ion-row> {{order?.delivery_date | date:"MM/dd/yy HH:mm"}} </ion-row>
+        <h1>ที่อยู่ที่ให้รับของ</h1>
+        <ion-row style="color: red"> ชื่อ/บริษิท : </ion-row>
+        <ion-row> {{order?.name_giver}} </ion-row>
+        <ion-row style="color: red"> รายละเอียดที่อยู่ : </ion-row>
+        <ion-row> {{order?.detail_address_giver}} </ion-row>
+        <ion-row style="color: red"> แขวง/ตำบล : </ion-row>
+        <ion-row> {{order?.subdistrict_giver}} </ion-row>
+        <ion-row style="color: red"> รายละเอียดที่อยู่ : </ion-row>
+        <ion-row> {{order?.detail_address_giver}} </ion-row>
+        <ion-row style="color: red"> เขต/อำเภอ : </ion-row>
+        <ion-row> {{order?.district_giver}} </ion-row>
+        <ion-row style="color: red"> จังหวัด : </ion-row>
+        <ion-row> {{order?.province_giver}} </ion-row>
+        <ion-row style="color: red"> รหัสไปรษณีย์ : </ion-row>
+        <ion-row> {{order?.postCode_giver}} </ion-row>
+        <ion-row style="color: red"> เบอร์มือถือ : </ion-row>
+        <ion-row> {{order?.tel_giver}} </ion-row>
+        <h1>ที่อยู่ที่ให้ไปส่ง</h1>
+        <ion-row style="color: red"> ชื่อ/บริษิท : </ion-row>
+        <ion-row> {{order?.name_recipient}} </ion-row>
+        <ion-row style="color: red"> รายละเอียดที่อยู่ : </ion-row>
+        <ion-row> {{order?.subdistrict_recipient}} </ion-row>
+        <ion-row style="color: red"> แขวง/ตำบล : </ion-row>
+        <ion-row> {{order?.district_recipient}} </ion-row>
+        <ion-row style="color: red">จังหวัด : </ion-row>
+        <ion-row> {{order?.province_recipient}} </ion-row>
+        <ion-row style="color: red">รหัสไปรษณีย์ : </ion-row>
+        <ion-row> {{order?.postCode_recipient}} </ion-row>
+        <ion-row style="color: red">เบอร์มือถือ : </ion-row>
+        <ion-row> {{order?.tel_recipient}} </ion-row>
+      </ion-grid>
+    </ion-grid>
+    <ng-container *ngIf="user?.role ==='ผู้จ้าง' && order?.status ===0">
+      <button class="btn-submit" (click)="cancel()">ยกเลิก</button>
+    </ng-container>
+    <ng-container *ngIf="user?.role ==='บริษัทขนส่ง'  && order?.status ===0">
+      <button class="btn-submit" (click)="accept()">ยอมรับการว่าจ้าง</button>
+      <button class="btn-submit danger" (click)="denine()">ปฏิเสธ</button>
+    </ng-container>
+
+    <ng-container *ngIf="user?.role ==='บริษัทขนส่ง'  && order?.status ===1">
+      <button class="btn-submit" (click)="sign()">ยืนยันการส่ง</button>
+    </ng-container>
+
+    <ng-container *ngIf="  order?.status ===3">
+      <button class="btn-submit" (click)="showSign()">ดูลายเซ็นผู้รับ</button>
+    </ng-container>
+  </div>
+</ion-content>

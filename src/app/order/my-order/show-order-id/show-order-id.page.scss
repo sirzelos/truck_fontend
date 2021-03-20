@@ -9,11 +9,15 @@ ion-toolbar {
   --padding-end: 0px;
 }
 .btn-submit {
+  margin-top: 10px;
   width: 100%;
   height: 40px;
   border-radius: 8px;
   color: white;
   background-color: #62cc6b;
+  &.danger {
+    background-color: red;
+  }
 }
 ion-icon {
   color: black;

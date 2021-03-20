@@ -1,3 +1,4 @@
+import { Authentication } from "src/app/services/auth.service";
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -16,6 +17,7 @@ export class LoginPage implements OnInit {
     private readonly router: Router,
     private readonly fb: FormBuilder,
     private http: HttpClient,
+    private auth: Authentication,
     private loadingController: LoadingController
   ) {
     this.form = this.fb.group({
@@ -56,13 +58,13 @@ export class LoginPage implements OnInit {
       return;
     }
     const formData: any = this.form.getRawValue();
-
+    let client_secret = this.auth.getKey();
     const data = {
       username: formData.email,
       password: formData.password,
       grant_type: "password",
       client_id: 2,
-      client_secret: "ZR0jxS0SvMyvwSDgR6LiUxAe0sc94rWLX0ou6KeY",
+      client_secret,
       scope: "*",
     };
     const loading = await this.loadingController.create();

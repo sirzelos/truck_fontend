@@ -24,7 +24,7 @@
       </div>
       <ion-item>
         <ion-label position="floating">น้ำหนักของ </ion-label>
-        <ion-input formControlName="weight_product" type="text" required>
+        <ion-input formControlName="weight_product" type="number" required>
           <div class="addon">กิโลกรัม</div>
         </ion-input>
       </ion-item>
@@ -154,22 +154,40 @@
       </div>
       <ion-item>
         <ion-label position="floating">รหัสไปรษณีย์ </ion-label>
-        <ion-input formControlName="postCode_giver" type="text" required>
+        <ion-input
+          formControlName="postCode_giver"
+          type="number"
+          minlength="5"
+          maxlength="5"
+          required
+        >
         </ion-input>
       </ion-item>
       <div class="error-box" *ngIf="isInvalid('postCode_giver')">
         <span *ngIf="form?.get('postCode_giver')?.errors?.required">
           โปรดระบุรหัสไปรษณีย์
         </span>
+        <span *ngIf="form?.get('postCode_giver')?.errors?.minlength">
+          โปรดระบุรหัสไปรษณีย์ให้ถูกต้อง
+        </span>
       </div>
       <ion-item>
         <ion-label position="floating">เบอร์มือถือ </ion-label>
-        <ion-input formControlName="tel_giver" type="text" required>
+        <ion-input
+          formControlName="tel_giver"
+          type="text"
+          pattern="^(0)([689])([0-9]{8})$"
+          maxlength="10"
+          required
+        >
         </ion-input>
       </ion-item>
       <div class="error-box" *ngIf="isInvalid('tel_giver')">
         <span *ngIf="form?.get('tel_giver')?.errors?.required">
           โปรดระบุเบอร์มือถือ
+        </span>
+        <span *ngIf="form?.get('tel_giver')?.errors?.pattern">
+          โปรดระบุเบอร์มือถือให้ถูกต้อง
         </span>
       </div>
       <h1>ที่อยู่ที่ให้ไปส่ง</h1>
@@ -229,22 +247,40 @@
       </div>
       <ion-item>
         <ion-label position="floating">รหัสไปรษณีย์ </ion-label>
-        <ion-input formControlName="postCode_recipient" type="text" required>
+        <ion-input
+          formControlName="postCode_recipient"
+          type="number"
+          minlength="5"
+          maxlength="5"
+          required
+        >
         </ion-input>
       </ion-item>
       <div class="error-box" *ngIf="isInvalid('postCode_recipient')">
         <span *ngIf="form?.get('postCode_recipient')?.errors?.required">
           โปรดระบุรหัสไปรษณีย์
         </span>
+        <span *ngIf="form?.get('postCode_recipient')?.errors?.minlength">
+          โปรดระบุรหัสไปรษณีย์ให้ถูกต้อง
+        </span>
       </div>
       <ion-item>
         <ion-label position="floating">เบอร์มือถือ </ion-label>
-        <ion-input formControlName="tel_recipient" type="text" required>
+        <ion-input
+          formControlName="tel_recipient"
+          type="text"
+          pattern="^(0)([689])([0-9]{8})$"
+          maxlength="10"
+          required
+        >
         </ion-input>
       </ion-item>
       <div class="error-box" *ngIf="isInvalid('tel_recipient')">
         <span *ngIf="form?.get('tel_recipient')?.errors?.required">
           โปรดระบุเบอร์มือถือ
+        </span>
+        <span *ngIf="form?.get('tel_recipient')?.errors?.pattern">
+          โปรดระบุเบอร์มือถือให้ถูกต้อง
         </span>
       </div>
       <div style="margin-top: 16px; padding: 8px; background-color: cadetblue">

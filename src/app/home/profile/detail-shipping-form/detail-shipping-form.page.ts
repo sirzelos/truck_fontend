@@ -13,6 +13,8 @@ import { Authentication } from "src/app/services/auth.service";
 export class DetailShippingFormPage implements OnInit {
   form: FormGroup;
   user: any;
+  mode: any = "new";
+
   constructor(
     private readonly router: Router,
     private readonly fb: FormBuilder,
@@ -33,6 +35,7 @@ export class DetailShippingFormPage implements OnInit {
       central_mini_weight_cost: ["", [Validators.required]],
       weight_to_kk: ["", [Validators.required]],
       product_type: ["", [Validators.required]],
+      tel: ["", [Validators.required]],
     });
   }
   async loadForm() {
@@ -64,6 +67,7 @@ export class DetailShippingFormPage implements OnInit {
       .setValue(result?.central_mini_weight_cost);
     this.form.get("weight_to_kk").setValue(result?.weight_to_kk);
     this.form.get("product_type").setValue(result?.product_type);
+    this.form.get("tel").setValue(result?.tel);
   }
   isInvalid(name: string) {
     return this.form.get(name).invalid && this.form.get(name).touched;
@@ -80,6 +84,7 @@ export class DetailShippingFormPage implements OnInit {
     const { mode } = this.aroute.snapshot.params;
     this.user = await this.auth.currentUser();
     if (mode === "edit") {
+      this.mode = "edit";
       this.loadForm();
     }
   }

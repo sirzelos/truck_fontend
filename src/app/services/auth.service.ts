@@ -31,6 +31,11 @@ export class Authentication {
     this.token = null;
   }
 
+  getKey(): string {
+    let id = "m9TnVGzG6VhAYzvYNkRZNDMngx3D5hWPXAD18ccz";
+    return id;
+  }
+
   async currentUser(): Promise<any> {
     if (this.isLoggedIn()) {
       const headers = new HttpHeaders({

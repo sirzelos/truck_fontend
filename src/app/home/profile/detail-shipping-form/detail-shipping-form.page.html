@@ -5,7 +5,8 @@
         <ion-icon size="large" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>เพิ่มรายละเอียดขนส่ง</ion-title>
+    <ion-title *ngIf="mode==='new'">เพิ่มรายละเอียดขนส่ง</ion-title>
+    <ion-title *ngIf="mode==='edit'">แก้ไขายละเอียดขนส่ง</ion-title>
   </ion-toolbar> </ion-header
 ><ion-content fullscreen>
   <form [formGroup]="form">
@@ -22,12 +23,34 @@
       </div>
       <ion-item>
         <ion-label position="floating">ค่าน้ำมัน/เต็มถัง </ion-label>
-        <ion-input formControlName="oil_cost" type="text" required> </ion-input>
+        <ion-input formControlName="oil_cost" type="number" required>
+        </ion-input>
         <div class="addon">บาท</div>
       </ion-item>
       <div class="error-box" *ngIf="isInvalid('oil_cost')">
         <span *ngIf="form?.get('oil_cost')?.errors?.required">
           โปรดระบุประเภทค่าน้ำมัน/เต็มถัง
+        </span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">เบอร์โทรศัพท์บริษัท </ion-label>
+        <ion-input
+          formControlName="tel"
+          type="text"
+          pattern="^(0)([689])([0-9]{8})$"
+          maxlength="10"
+          required
+        >
+        </ion-input>
+      </ion-item>
+      <div class="error-box" *ngIf="isInvalid('tel')">
+        <span *ngIf="form?.get('tel')?.errors?.required">
+          โปรดระบุเบอร์โทรศัพท์บริษัท
+        </span>
+      </div>
+      <div class="error-box" *ngIf="isInvalid('tel')">
+        <span *ngIf="form?.get('tel')?.errors?.pattern">
+          โปรดระบุเบอร์โทรศัพท์บริษัทให้ถูกต้อง
         </span>
       </div>
       <h1>กำหนดราคาขั้นต่ำต่อน้ำหนักสินค้า</h1>

@@ -1,3 +1,4 @@
+import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { ToastController } from "@ionic/angular";
 import { Authentication } from "src/app/services/auth.service";
@@ -15,7 +16,8 @@ export class MyOrderPage implements OnInit {
   constructor(
     private userService: UsersService,
     private auth: Authentication,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private router: Router
   ) {}
   ngOnInit() {}
   async ionViewWillEnter() {
@@ -34,7 +36,19 @@ export class MyOrderPage implements OnInit {
   getStatus(status: number) {
     if (status === 0) {
       return "รอบริษัทขนส่งยอมรับ";
+    } else if (status === 1) {
+      return "อยู่ระหว่างขนส่ง";
+    } else if (status === 3) {
+      return "ขนส่งสำเร็จ";
+    } else if (status === 99) {
+      return "บริษัทขนส่งปฏิเสธ";
+    } else if (status === 55) {
+      return "ผู้จ้างยกเลิก";
     }
+  }
+
+  showOrder(id: number) {
+    this.router.navigate(["order", id]);
   }
   async loadOrder() {
     this.user = await this.auth.currentUser();

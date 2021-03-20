@@ -11,6 +11,7 @@
 <ion-content>
   <form [formGroup]="form">
     <div style="padding: 16px">
+      <div class="error-box" *ngIf="error">กรุณาเปลี่ยนอีเมล</div>
       <ion-item>
         <ion-label position="floating">ชื่อ-นามสกุล//ชื่อบริษัท</ion-label>
         <ion-input
@@ -48,13 +49,16 @@
       </div>
       <ion-item>
         <ion-label position="floating">รหัสผ่าน</ion-label>
-        <ion-input
-          formControlName="password"
-          type="password"
-          maxlength="10"
-          required
-        >
-        </ion-input>
+        <app-show-hide-password>
+          <ion-input
+            formControlName="password"
+            type="password"
+            maxlength="15"
+            minlength="5"
+            required
+          >
+          </ion-input
+        ></app-show-hide-password>
       </ion-item>
       <div class="error-box" *ngIf="isInvalid('password')">
         <span *ngIf="form?.get('password')?.errors?.required">
@@ -66,14 +70,16 @@
       </div>
       <ion-item>
         <ion-label position="floating">ยืนยันรหัสผ่าน</ion-label>
-        <ion-input
-          formControlName="password_confirmation"
-          type="password"
-          maxlength="15"
-          minlength="5"
-          required
-        >
-        </ion-input>
+        <app-show-hide-password>
+          <ion-input
+            formControlName="password_confirmation"
+            type="password"
+            maxlength="15"
+            minlength="5"
+            required
+          >
+          </ion-input>
+        </app-show-hide-password>
       </ion-item>
       <div
         class="error-box"
@@ -103,11 +109,6 @@
           <ion-select-option value="ผู้จ้าง"> ผู้จ้าง</ion-select-option>
         </ion-select>
       </ion-item>
-      <div class="error-box" *ngIf="isInvalid('role')">
-        <span *ngIf="form?.get('role')?.errors?.required">
-          โปรดระบุตำแหน่ง
-        </span>
-      </div>
     </div>
   </form>
 </ion-content>

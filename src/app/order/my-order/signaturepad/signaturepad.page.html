@@ -1,0 +1,40 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>ลายเซ็น</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div style="background-color: white; border: black solid">
+    <signature-pad
+      *ngIf="mode==='new'"
+      [options]="signaturePadOptions"
+      (onBeginEvent)="drawStart()"
+      (onEndEvent)="drawComplete()"
+    ></signature-pad>
+    <signature-pad
+      *ngIf="mode==='show'"
+      [options]="signaturePadOptions"
+    ></signature-pad>
+  </div>
+  <button
+    *ngIf="data && mode ==='new'"
+    style="padding: 16px"
+    class="btn-submit"
+    (click)="save()"
+  >
+    ยืนยัน
+  </button>
+  <button
+    *ngIf="mode ==='show'"
+    style="padding: 16px"
+    class="btn-submit"
+    (click)="back()"
+  >
+    ย้อนกลับ
+  </button>
+</ion-content>

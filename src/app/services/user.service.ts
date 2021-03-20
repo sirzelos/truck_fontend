@@ -46,4 +46,25 @@ export class UsersService {
       .toPromise();
     return result;
   }
+
+  async getOrderByID(id: number): Promise<any> {
+    const result = await this.http
+      .get("http://127.0.0.1:8000/order/show/" + id)
+      .toPromise();
+    return result;
+  }
+
+  async updateOrder(id: number, status: number) {
+    const result = await this.http
+      .get("http://127.0.0.1:8000/myorder/update/" + id + "/" + status)
+      .toPromise();
+    return result;
+  }
+  async saveSignaturepad(id: number, form: any) {
+    const result = await this.http
+      .post("http://127.0.0.1:8000/saveSignaturepad/" + id, form)
+      .toPromise();
+
+    return result;
+  }
 }
